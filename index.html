@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Registro de viajes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><h1>Registro de viajes</h1><p>Anota el trayecto, el presupuesto y los gastos de cada viaje, y descárgalo en PDF.</p></header>
+<main>
+<section>
+<h2>Nuevo viaje</h2>
+<div class="grid">
+<label>Fecha<input type="date" id="fecha"></label>
+<label>Lugar de partida<input id="origen" placeholder="Ciudad o punto de salida"></label>
+<label>Lugar de llegada<input id="destino" placeholder="Ciudad o punto de destino"></label>
+<label>Presupuesto del viaje (S/)<input type="number" id="presupuesto" min="0" step="0.01" inputmode="decimal"></label>
+<label>Gasto en petróleo (S/)<input type="number" id="petroleo" min="0" step="0.01" inputmode="decimal"></label>
+<label>Gasto en peajes (S/)<input type="number" id="peaje" min="0" step="0.01" inputmode="decimal"></label>
+<label>Gasto en viáticos (S/)<input type="number" id="viaticos" min="0" step="0.01" inputmode="decimal"></label>
+</div>
+<h2 style="margin-top:18px">Gastos adicionales</h2>
+<div id="extras"></div>
+<div class="actions"><button type="button" class="small" id="addExtra">Agregar gasto adicional</button></div>
+<div class="totals">
+<div><span>Total gastado</span><strong id="tGasto">S/ 0.00</strong></div>
+<div><span>Presupuesto</span><strong id="tPres">S/ 0.00</strong></div>
+<div><span>Ganancia (presupuesto − gastos)</span><strong id="tSaldo">S/ 0.00</strong></div>
+</div>
+<div class="actions">
+<button type="button" class="primary" id="guardar">Guardar viaje</button>
+<button type="button" id="pdfActual">Descargar PDF de este viaje</button>
+<button type="button" id="limpiar">Limpiar formulario</button>
+</div>
+<div id="msg" role="status"></div>
+</section>
+<section>
+<h2>Viajes registrados</h2>
+<div class="actions" style="margin:0 0 6px"><button type="button" id="pdfTodos">Descargar PDF de todos los viajes</button></div>
+<div id="lista"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
